@@ -20,7 +20,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     public void draw(Graphics g) {
-
+        for (int i=0;i<SCREEN_WIDTH/UNIT_SIZE;i++) {
+            g.drawLine(i * UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
+            g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+        }
     }
 
     @Override
