@@ -14,7 +14,9 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     Timer timer = new Timer(DELAY, this);
 
-    ParticlePanel() {}
+    ParticlePanel() {
+        timer.start();
+    }
 
 
 
