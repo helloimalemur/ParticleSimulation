@@ -18,10 +18,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     //create atoms
-    ArrayList<Atom> yellow = this.createAtoms(200, 'y');
-    ArrayList<Atom> red = this.createAtoms(200, 'r');
-    ArrayList<Atom> green = this.createAtoms(200, 'g');
-    ArrayList<Atom> blue = this.createAtoms(200, 'b');
+    ArrayList<Atom> yellow = this.createAtoms(300, 'y');
+    ArrayList<Atom> red = this.createAtoms(300, 'r');
+    ArrayList<Atom> green = this.createAtoms(300, 'g');
+    ArrayList<Atom> blue = this.createAtoms(300, 'b');
 
 
 
@@ -50,12 +50,15 @@ public class ParticlePanel extends JPanel implements ActionListener {
         //run interaction rules on atoms
         interactionRule(green, green, -0.32);
         interactionRule(green, red, -0.17);
-        interactionRule(green, yellow, 0.34);
+        interactionRule(green, yellow, 0.5);
         interactionRule(red, red, -0.1);
         interactionRule(red, green, -0.34);
-        interactionRule(yellow, blue, 0.15);
+        interactionRule(yellow, yellow, 0.15);
         interactionRule(yellow, green, -0.2);
-        interactionRule(blue, blue, -0.3);
+        //additions
+        interactionRule(blue, blue, -0.1);
+        interactionRule(green, blue, 0.1);
+        interactionRule(yellow, blue, 0.1);
 
 
     }
