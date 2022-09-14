@@ -59,8 +59,6 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(blue, blue, -0.1);
         interactionRule(green, blue, 0.1);
         interactionRule(yellow, blue, 0.1);
-
-
     }
 
 
