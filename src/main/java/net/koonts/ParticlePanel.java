@@ -22,6 +22,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     ArrayList<Atom> red = this.createAtoms(300, 'r');
     ArrayList<Atom> green = this.createAtoms(300, 'g');
     ArrayList<Atom> blue = this.createAtoms(300, 'b');
+    ArrayList<Atom> magenta = this.createAtoms(300, 'm');
 
 
 
@@ -44,6 +45,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
         if (c=='r') {return Color.red;}
         if (c=='b') {return Color.blue;}
         if (c=='y') {return Color.yellow;}
+        if (c=='m') {return Color.magenta;}
         return null;
     }
     public void update() {
@@ -58,6 +60,9 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(blue, blue, -0.1);
         interactionRule(green, blue, -0.2);
         interactionRule(yellow, blue, 0.2);
+        interactionRule(yellow, magenta, 0.3);
+        interactionRule(magenta, magenta, -0.3);
+
     }
 
 
