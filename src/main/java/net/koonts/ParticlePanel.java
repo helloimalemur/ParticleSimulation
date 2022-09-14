@@ -1,6 +1,8 @@
 package net.koonts;
 //https://github.com/hunar4321/particle-life
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
@@ -60,8 +62,13 @@ public class ParticlePanel extends JPanel implements ActionListener {
             a.vy = (int) ((a.vy + fy) * 0.5);
             a.x += a.vx;
             a.y += a.vy;
-            if (a.x <= 0 || a.x >= 500) { a.vx *= -1; }
-            if (a.y <= 0 || a.y >= 500) { a.vy *= -1; }
+            if (a.x <= 0 || a.x >= 500) {
+                a.vx *= -1;
+            }
+            if (a.y <= 0 || a.y >= 500) {
+                a.vy *= -1;
+            }
+        }
     }
 
 
@@ -82,6 +89,4 @@ public class ParticlePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         repaint();
     }
-
-
 }
