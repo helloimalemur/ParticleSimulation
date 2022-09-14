@@ -16,17 +16,40 @@ public class ParticlePanel extends JPanel implements ActionListener {
     //simulation variables
     ArrayList<Atom> atoms = new ArrayList<Atom>();
     Random random = new Random();
+    ArrayList<Atom> yellow = this.createAtoms(200, 'y');
+    ArrayList<Atom> red = this.createAtoms(200, 'r');
+    ArrayList<Atom> green = this.createAtoms(200, 'g');
+    ArrayList<Atom> blue = this.createAtoms(200, 'b');
 
 
     Timer timer = new Timer(DELAY, this);
 
     ParticlePanel() {
+
         timer.start();
     }
 
     public int random(){
         int v = (random.nextInt(100)*4)+50;
         return v;
+    }
+
+    public void initiate() {
+
+
+    }
+    public void update() {
+        interactionRule(green, green, -0.32);
+        interactionRule(green, red, -0.17);
+        interactionRule(green, yellow, 0.34);
+        interactionRule(red, red, -0.1);
+        interactionRule(red, green, -0.34);
+        interactionRule(yellow, yellow, 0.15);
+        interactionRule(yellow, green, -0.2);
+        for (i = 0; i < atoms.length; i++) {
+            draw(atoms[i].x, atoms[i].y, atoms[i].color, 5);
+        }
+
     }
 
     //create atoms
@@ -41,7 +64,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     }
 
     //atom interaction rules
-    public void interactionRule(ArrayList<Atom> atoms1, ArrayList<Atom> atoms2, int g) {
+    public void interactionRule(ArrayList<Atom> atoms1, ArrayList<Atom> atoms2, double g) {
         for (int i = 0; i < atoms1.size(); i++) {
             int fx = 0;
             int fy = 0;
