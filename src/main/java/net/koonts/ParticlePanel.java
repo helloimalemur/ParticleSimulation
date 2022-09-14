@@ -109,8 +109,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
     public void draw(Graphics graphics) {
         for (int i = 0; i < atoms.size(); i++) {
             graphics.setColor(getColor(atoms.get(i).getC()));
-            graphics.fillOval((int) atoms.get(i).x,(int) atoms.get(i).y,5,5);// cast x/y to int to draw atoms
-            System.out.println((int) atoms.get(i).x+(int) atoms.get(i).y);
+            graphics.fillOval(Math.abs((int) atoms.get(i).x),Math.abs((int) atoms.get(i).y),5,5);// cast x/y to int to draw atoms
+            //System.out.println(atoms.get(i).x+atoms.get(i).y);
+            //definitely a bug here casting double to int
+            // getting coords outside grid
         }
     }
 
