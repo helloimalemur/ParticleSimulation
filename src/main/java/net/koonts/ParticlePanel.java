@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ParticlePanel extends JPanel implements ActionListener {
-    int SCREEN_WIDTH = 500;
-    int SCREEN_HEIGHT = 500;
+    int SCREEN_WIDTH = 600;
+    int SCREEN_HEIGHT = 600;
     int UNIT_SIZE = 10;
     int GAME_UNIT = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE);
     int DELAY = 100;
@@ -33,7 +33,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     }
 
     public int random(){
-        int v = (random.nextInt(100)*5)-10;
+        int v = (random.nextInt(100)*6);
         return v;
     }
 
@@ -89,10 +89,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
             a.vy = ((a.vy + fy) * 0.5);
             a.x += a.vx;
             a.y += a.vy;
-            if (a.x <= 0 || a.x >= 500) {
+            if (a.x <= 0 || a.x >= SCREEN_WIDTH) {
                 a.vx *= -1;
             }
-            if (a.y <= 0 || a.y >= 500) {
+            if (a.y <= 0 || a.y >= SCREEN_HEIGHT) {
                 a.vy *= -1;
             }
         }
