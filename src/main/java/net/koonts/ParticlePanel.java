@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ParticlePanel extends JPanel implements ActionListener {
     int SCREEN_WIDTH = 600;
@@ -11,6 +12,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
     int UNIT_SIZE = 10;
     int GAME_UNIT = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE);
     int DELAY = 100;
+    //simulation variables
+    ArrayList<Atom> atoms = new ArrayList<>();
+    ArrayList<Object> atomgroup = new ArrayList<>();
+
 
     Timer timer = new Timer(DELAY, this);
 
