@@ -48,17 +48,16 @@ public class ParticlePanel extends JPanel implements ActionListener {
     }
     public void update() {
         //run interaction rules on atoms
-        interactionRule(green, green, -0.32);
+        interactionRule(green, green, -0.28);
         interactionRule(green, red, -0.17);
         interactionRule(green, yellow, 0.5);
         interactionRule(red, red, -0.1);
         interactionRule(red, green, -0.34);
         interactionRule(yellow, yellow, 0.15);
         interactionRule(yellow, green, -0.2);
-        //additions
         interactionRule(blue, blue, -0.1);
-        interactionRule(green, blue, 0.1);
-        interactionRule(yellow, blue, 0.1);
+        interactionRule(green, blue, -0.2);
+        interactionRule(yellow, blue, 0.2);
     }
 
 
