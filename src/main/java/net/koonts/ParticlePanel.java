@@ -53,8 +53,9 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(green, yellow, 0.34);
         interactionRule(red, red, -0.1);
         interactionRule(red, green, -0.34);
-        interactionRule(yellow, yellow, 0.15);
+        interactionRule(yellow, blue, 0.15);
         interactionRule(yellow, green, -0.2);
+        interactionRule(blue, blue, -0.3);
 
 
     }
@@ -62,8 +63,8 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     public ArrayList<Atom> createAtoms(int number, char color) {
         //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
-        ArrayList<Atom> atomgroup = new ArrayList<>();
-        for (int i=0;i<number;i++) {
+        ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference of ALL atoms held in 'atoms' array.
+        for (int i=0;i<number;i++) { //with separate arrays for each color we can run interactions on color arrays, then paint all atoms using 'atoms'
             Atom atom = new Atom(random(), random(), color);
             atomgroup.add(i, atom);
             atoms.add(atomgroup.get(i));
