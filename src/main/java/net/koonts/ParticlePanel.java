@@ -63,7 +63,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     public ArrayList<Atom> createAtoms(int number, char color) {
         //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
-        ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference of ALL atoms held in 'atoms' array.
+        ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference for ALL atoms packed into 'atoms' array
         for (int i=0;i<number;i++) { //with separate arrays for each color we can run interactions on each, then paint all atoms using 'atoms'
             Atom atom = new Atom(random(), random(), color);
             atomgroup.add(i, atom);
