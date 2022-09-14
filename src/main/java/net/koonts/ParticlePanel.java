@@ -10,7 +10,7 @@ import java.util.Random;
 public class ParticlePanel extends JPanel implements ActionListener {
     double SCREEN_WIDTH = 600;
     double SCREEN_HEIGHT = 600;
-    int DELAY = 100;
+    int DELAY = 60;//
     Random random = new Random();
 
     //simulation variables
