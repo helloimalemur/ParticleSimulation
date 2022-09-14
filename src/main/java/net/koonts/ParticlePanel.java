@@ -10,13 +10,14 @@ import java.util.Random;
 public class ParticlePanel extends JPanel implements ActionListener {
     int SCREEN_WIDTH = 600;
     int SCREEN_HEIGHT = 600;
-    int UNIT_SIZE = 10;
-    int GAME_UNIT = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE);
     int DELAY = 100;
-    //simulation variables
-    ArrayList<Atom> atoms = new ArrayList<Atom>();
     Random random = new Random();
 
+    //simulation variables
+    ArrayList<Atom> atoms = new ArrayList<Atom>();
+
+
+    //create atoms
     ArrayList<Atom> yellow = this.createAtoms(200, 'y');
     ArrayList<Atom> red = this.createAtoms(200, 'r');
     ArrayList<Atom> green = this.createAtoms(200, 'g');
@@ -26,18 +27,19 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     ParticlePanel() {
-
-
+        //start timer which activates action listener on DELAY interval
         Timer timer = new Timer(DELAY, this);
         timer.start();
     }
 
     public int random(){
+        //used for placement of new atoms
         int v = (random.nextInt(100)*6);
         return v;
     }
 
     public Color getColor(char c) {
+        //transcribe char to Java color object
         if (c=='g') {return Color.green;}
         if (c=='r') {return Color.red;}
         if (c=='b') {return Color.blue;}
@@ -45,6 +47,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
         return null;
     }
     public void update() {
+        //run interaction rules on atoms
         interactionRule(green, green, -0.32);
         interactionRule(green, red, -0.17);
         interactionRule(green, yellow, 0.34);
@@ -56,15 +59,18 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     }
 
-    //create atoms
+
     public ArrayList<Atom> createAtoms(int number, char color) {
+        //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
         ArrayList<Atom> atomgroup = new ArrayList<>();
         for (int i=0;i<number;i++) {
             Atom atom = new Atom(random(), random(), color);
             atomgroup.add(i, atom);
             atoms.add(atomgroup.get(i));
+            //atoms.add(i, atom);
         }
         return atomgroup;
+        //return atoms;
     }
 
     //atom interaction rules
@@ -102,20 +108,20 @@ public class ParticlePanel extends JPanel implements ActionListener {
     public void draw(Graphics graphics) {
         for (int i = 0; i < atoms.size(); i++) {
             graphics.setColor(getColor(atoms.get(i).getC()));
-            graphics.fillOval((int) atoms.get(i).x,(int) atoms.get(i).y,5,5);
+            graphics.fillOval((int) atoms.get(i).x,(int) atoms.get(i).y,5,5);// cast x/y to int to draw atoms
         }
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { //override abstract method inhereted from extending JPanel
         super.paintComponent(g);
         draw(g);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
-        repaint();
-        update();
+    public void actionPerformed(ActionEvent actionEvent) { //override abstract method inhereted from implementing actionlistener
+        //we activate this using timer
+        repaint(); //repaint the graphics
+        update(); //update atom interactions
     }
 }
