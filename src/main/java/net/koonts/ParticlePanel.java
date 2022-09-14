@@ -34,11 +34,14 @@ public class ParticlePanel extends JPanel implements ActionListener {
         return v;
     }
 
-    public void initiate() {
-
-
+    public Color getColor(char c) {
+        if (c=='g') {return Color.green;}
+        if (c=='r') {return Color.red;}
+        if (c=='b') {return Color.blue;}
+        if (c=='y') {return Color.yellow;}
+        return null;
     }
-    public void update() {
+    public void update(Graphics graphics) {
         interactionRule(green, green, -0.32);
         interactionRule(green, red, -0.17);
         interactionRule(green, yellow, 0.34);
@@ -46,8 +49,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(red, green, -0.34);
         interactionRule(yellow, yellow, 0.15);
         interactionRule(yellow, green, -0.2);
-        for (i = 0; i < atoms.length; i++) {
-            draw(atoms[i].x, atoms[i].y, atoms[i].color, 5);
+        for (int i = 0; i < atoms.size(); i++) {
+            graphics.setColor(getColor(atoms.get(i).getC()));
+            graphics.fillOval(atoms.get(i).x,atoms.get(i).y,5,5);
+            //draw(atoms.get(i).x, atoms.get(i).y, atoms.get(i).color, 5);
         }
 
     }
@@ -96,10 +101,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     public void draw(Graphics g) {
-        for (int i=0;i<SCREEN_WIDTH/UNIT_SIZE;i++) {
-            g.drawLine(i * UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-            g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
-        }
+        update(g);
     }
 
     @Override
