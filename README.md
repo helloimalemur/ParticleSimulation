@@ -1,16 +1,20 @@
 # ParticleSimulation
-simple Java port of <a href="https://github.com/hunar4321/particle-life">Brainxyz's Artificial Life</a>
+<h2>simple Java port of <a href="https://github.com/hunar4321/particle-life">Brainxyz's Artificial Life</a></h2>
 
 A simple program to simulate primitive Artificial Life using simple rules of attraction or repulsion among atom-like particles, producing complex self-organzing life-like patterns.
 
-```git clone https://github.com/helloimalemur/ParticleSimulation```
+<h4>Linux;</h4>
 
-```cd ParticleSimulation```
+1. ```git clone https://github.com/helloimalemur/ParticleSimulation```
 
-on linux;
+2. ```cd ParticleSimulation/```
 
-```./gradlew run```
+3. ```./gradlew run```
 
-on Windows;
+<h4>Windows;</h4>
 
-```.\gradlew.bat run```
+1. <a href="https://github.com/helloimalemur/ParticleSimulation/archive/refs/heads/master.zip">Download ZIP</a>
+
+2. Extract zip
+
+3. run in PowerShell: ```.\gradlew.bat run```
