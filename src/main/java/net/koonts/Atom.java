@@ -1,10 +1,10 @@
 package net.koonts;
 
 public class Atom {
-    int x;
-    int y;
-    int vx;
-    int vy;
+    double x;
+    double y;
+    double vx;
+    double vy;
     char c;
     Atom(int x, int y, char c) {
         this.x = x;
@@ -18,17 +18,17 @@ public class Atom {
         return this;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getVx() { return vx; }
+    public double getVx() { return vx; }
 
-    public int getVy() { return vy; }
+    public double getVy() { return vy; }
 
     public char getC() {
         return c;
