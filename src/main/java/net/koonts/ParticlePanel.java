@@ -29,7 +29,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     ParticlePanel() {
         Controls controls = new Controls(this);
-        controls.start();
+        controls.start();//start timer
         controls.create();
     }
 

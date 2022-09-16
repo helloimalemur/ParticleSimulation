@@ -10,7 +10,6 @@ public class Controls {
 
     //Controls//
     //reset
-
     public void resetSim(){
         particlePanel.timer.stop();
         particlePanel.atoms.clear();
@@ -20,7 +19,6 @@ public class Controls {
         particlePanel.yellow.clear();
         particlePanel.magenta.clear();
         create();
-
     }
     public void create(){
         particlePanel.yellow = particlePanel.createAtoms(300, 'y');
@@ -30,20 +28,18 @@ public class Controls {
         particlePanel.magenta = particlePanel.createAtoms(300, 'm');
     }
     //start
-//    public void start(){
-//        timer.start();
-//    }
+    public void start(){
+        particlePanel.timer.start();
+
+    }
+
     //stop
     public void stop(){
         particlePanel.timer.stop();
     }
     //randomize rules//manual rules
+
     //random number of rules//set number of rules
 
-
-    public void start(){
-        particlePanel.timer.start();
-
-    }
 
 }
