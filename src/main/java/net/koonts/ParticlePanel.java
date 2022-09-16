@@ -80,12 +80,12 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     }
 
-    public void randomRules(){
-        int numRule = random.nextInt(12);
-        for (int i=0;i<numRule;i++) {
-            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
-        }
-    }
+//    public void randomRules(){
+//        int numRule = random.nextInt(12);
+//        for (int i=0;i<numRule;i++) {
+//            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
+//        }
+//    }
 
     //atom interaction rules
 

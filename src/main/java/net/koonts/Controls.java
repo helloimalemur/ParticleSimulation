@@ -18,8 +18,17 @@ public class Controls {
         particlePanel.magenta.clear();
         particlePanel.createAtoms();
     }
-
-
+    //resetRandom
+    public void resetRandom(){
+        particlePanel.timer.stop();
+        particlePanel.atoms.clear();
+        particlePanel.red.clear();
+        particlePanel.green.clear();
+        particlePanel.blue.clear();
+        particlePanel.yellow.clear();
+        particlePanel.magenta.clear();
+        particlePanel.createRandomAtoms();
+    }
     //start
     public void start(){
         particlePanel.timer.start();
