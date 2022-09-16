@@ -1,9 +1,11 @@
 package net.koonts;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Controls {
     ParticlePanel particlePanel;
+    JPanel controlPanel = new JPanel();
     public Button resetButton = new Button();
     public Button randomResetButton = new Button();
     Controls(ParticlePanel particlePanel) {
@@ -14,14 +16,14 @@ public class Controls {
         resetButton.addActionListener(particlePanel);
         resetButton.setPreferredSize(new Dimension(60,20));
         resetButton.setVisible(true);
-        particlePanel.add(resetButton);
+        controlPanel.add(resetButton);
         //
         //random reset button
         randomResetButton.setLabel("Random Reset");
         randomResetButton.addActionListener(particlePanel);
         randomResetButton.setPreferredSize(new Dimension(60,20));
         randomResetButton.setVisible(true);
-        particlePanel.add(randomResetButton);
+        controlPanel.add(randomResetButton);
         //
     }
 
