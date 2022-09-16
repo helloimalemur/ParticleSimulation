@@ -1,7 +1,5 @@
 package net.koonts;
 
-import javax.swing.*;
-
 public class Controls {
     ParticlePanel particlePanel;
     Controls(ParticlePanel particlePanel) {
@@ -18,19 +16,13 @@ public class Controls {
         particlePanel.blue.clear();
         particlePanel.yellow.clear();
         particlePanel.magenta.clear();
-        create();
+        particlePanel.createAtoms();
     }
-    public void create(){
-        particlePanel.yellow = particlePanel.createAtoms(300, 'y');
-        particlePanel.red = particlePanel.createAtoms(300, 'r');
-        particlePanel.green = particlePanel.createAtoms(300, 'g');
-        particlePanel.blue = particlePanel.createAtoms(300, 'b');
-        particlePanel.magenta = particlePanel.createAtoms(300, 'm');
-    }
+
+
     //start
     public void start(){
         particlePanel.timer.start();
-
     }
 
     //stop

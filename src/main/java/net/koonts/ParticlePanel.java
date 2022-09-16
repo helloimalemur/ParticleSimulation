@@ -14,6 +14,8 @@ public class ParticlePanel extends JPanel implements ActionListener {
     Random random = new Random();
 
     //simulation variables
+    Controls controls = new Controls(this);
+    Utils utils = new Utils(this);
     Timer timer = new Timer(DELAY, this);//start timer which activates action listener on DELAY interval
     ArrayList<Atom> atoms = new ArrayList<Atom>();
 
@@ -28,29 +30,40 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     ParticlePanel() {
-        Controls controls = new Controls(this);
+
         controls.start();//start timer
-        controls.create();
+//        create();
+        createRandomAtoms();
     }
 
-    public int random(){
-        //used for placement of new atoms
-        int v = (random.nextInt(100)*6);
-        return v;
+    public void createAtoms(){
+        yellow = generateAtoms(300, 'y');
+        red = generateAtoms(300, 'r');
+        green = generateAtoms(300, 'g');
+        blue = generateAtoms(300, 'b');
+        magenta = generateAtoms(300, 'm');
+    }
+    public ArrayList<Atom> generateAtoms(int number, char color) {
+        //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
+        ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference for ALL atoms packed into 'atoms' array
+        for (int i=0;i<number;i++) { //with separate arrays for each color we can run interactions on each, then paint all atoms using 'atoms'
+            Atom atom = new Atom(utils.random(this), utils.random(this), color);
+            atomgroup.add(i, atom);
+            atoms.add(atomgroup.get(i));
+            //atoms.add(i, atom);
+        }
+        return atomgroup;
+        //return atoms;
+    }
+    public void createRandomAtoms(){
+        yellow = generateAtoms(random.nextInt(300), utils.randomColor(this));
+        red = generateAtoms(random.nextInt(300), utils.randomColor(this));
+        green = generateAtoms(random.nextInt(300), utils.randomColor(this));
+        blue = generateAtoms(random.nextInt(300), utils.randomColor(this));
+        magenta = generateAtoms(random.nextInt(300), utils.randomColor(this));
     }
 
-    public Color getColor(char c) {
-        //transcribe char to Java color object
-        if (c=='g'||c==0) {return Color.green;}
-        if (c=='r'||c==1) {return Color.red;}
-        if (c=='b'||c==2) {return Color.blue;}
-        if (c=='y'||c==3) {return Color.yellow;}
-        if (c=='m'||c==4) {return Color.magenta;}
-
-        return null;
-    }
-
-    public void update() {
+    public void updateInteraction() {
         //run interaction rules on atoms
         interactionRule(green, green, -0.28);
         interactionRule(green, red, -0.17);
@@ -67,24 +80,11 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     }
 
-    public void randomUpdate(){
+    public void randomRules(){
         int numRule = random.nextInt(12);
         for (int i=0;i<numRule;i++) {
-//            interactionRule(randomcolor,randomcolor, randomdouble);
+            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
         }
-    }
-
-    public ArrayList<Atom> createAtoms(int number, char color) {
-        //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
-        ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference for ALL atoms packed into 'atoms' array
-        for (int i=0;i<number;i++) { //with separate arrays for each color we can run interactions on each, then paint all atoms using 'atoms'
-            Atom atom = new Atom(random(), random(), color);
-            atomgroup.add(i, atom);
-            atoms.add(atomgroup.get(i));
-            //atoms.add(i, atom);
-        }
-        return atomgroup;
-        //return atoms;
     }
 
     //atom interaction rules
@@ -119,9 +119,12 @@ public class ParticlePanel extends JPanel implements ActionListener {
         }
     }
 
+
+
+    /////graphics
     public void draw(Graphics graphics) {
         for (int i = 0; i < atoms.size(); i++) {
-            graphics.setColor(getColor(atoms.get(i).getC()));
+            graphics.setColor(utils.getColor(atoms.get(i).getC()));
             graphics.fillOval(Math.abs((int) atoms.get(i).x),Math.abs((int) atoms.get(i).y),5,5);// cast x/y to int to draw atoms
             //System.out.println(atoms.get(i).x+atoms.get(i).y);
             //definitely a bug here casting double to int
@@ -139,10 +142,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) { //override abstract method inhereted from implementing actionlistener
         //we activate this using timer
         repaint(); //repaint the graphics
-        update(); //update atom interactions
+        updateInteraction(); //update atom interactions
     }
-
-
-
 
 }
