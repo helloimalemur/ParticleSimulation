@@ -30,10 +30,9 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     ParticlePanel() {
-
-        controls.start();//start timer
-//        create();
+//        createAtoms();
         createRandomAtoms();
+        controls.start();//start timer
     }
 
     public void createAtoms(){
