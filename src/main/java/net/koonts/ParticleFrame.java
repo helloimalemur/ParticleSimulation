@@ -18,7 +18,7 @@ public class ParticleFrame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        particlePanel.start();
+//        particlePanel.start();
 
     }
 }

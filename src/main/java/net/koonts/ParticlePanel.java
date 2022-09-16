@@ -28,7 +28,9 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     ParticlePanel() {
-        create();
+        Controls controls = new Controls(this);
+        controls.start();
+        controls.create();
     }
 
     public int random(){
@@ -131,38 +133,6 @@ public class ParticlePanel extends JPanel implements ActionListener {
         repaint(); //repaint the graphics
         update(); //update atom interactions
     }
-
-    //Controls//
-    //reset
-
-    public void resetSim(){
-        timer.stop();
-        atoms.clear();
-        red.clear();
-        green.clear();
-        blue.clear();
-        yellow.clear();
-        magenta.clear();
-        create();
-
-    }
-    public void create(){
-        yellow = this.createAtoms(300, 'y');
-        red = this.createAtoms(300, 'r');
-        green = this.createAtoms(300, 'g');
-        blue = this.createAtoms(300, 'b');
-        magenta = this.createAtoms(300, 'm');
-    }
-    //start
-    public void start(){
-        timer.start();
-    }
-    //stop
-    public void stop(){
-        timer.stop();
-    }
-    //randomize rules//manual rules
-    //random number of rules//set number of rules
 
 
 
