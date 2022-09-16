@@ -41,11 +41,12 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     public Color getColor(char c) {
         //transcribe char to Java color object
-        if (c=='g') {return Color.green;}
-        if (c=='r') {return Color.red;}
-        if (c=='b') {return Color.blue;}
-        if (c=='y') {return Color.yellow;}
-        if (c=='m') {return Color.magenta;}
+        if (c=='g'||c==0) {return Color.green;}
+        if (c=='r'||c==1) {return Color.red;}
+        if (c=='b'||c==2) {return Color.blue;}
+        if (c=='y'||c==3) {return Color.yellow;}
+        if (c=='m'||c==4) {return Color.magenta;}
+
         return null;
     }
 
@@ -64,6 +65,13 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(yellow, magenta, 0.3);
         interactionRule(magenta, magenta, -0.3);
 
+    }
+
+    public void randomUpdate(){
+        int numRule = random.nextInt(12);
+        for (int i=0;i<numRule;i++) {
+//            interactionRule(randomcolor,randomcolor, randomdouble);
+        }
     }
 
     public ArrayList<Atom> createAtoms(int number, char color) {
