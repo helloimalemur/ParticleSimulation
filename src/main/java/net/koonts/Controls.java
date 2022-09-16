@@ -10,11 +10,16 @@ public class Controls {
     public Button randomResetButton = new Button();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
-        //
+        controlPanel.setLayout(new BoxLayout(controlPanel,BoxLayout.Y_AXIS));
+//        controlPanel.setPreferredSize(new Dimension(100,600));
+//        controlPanel.setBackground(Color.black);//debug
+//        controlPanel.setBounds(600,600,200,600);
+        controlPanel.setLocation(600,0);
         //reset button
         resetButton.setLabel("Reset");
         resetButton.addActionListener(particlePanel);
         resetButton.setPreferredSize(new Dimension(60,20));
+//        resetButton.setBounds(0,0,60,40);
         resetButton.setVisible(true);
         controlPanel.add(resetButton);
         //
