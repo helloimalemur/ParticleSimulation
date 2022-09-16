@@ -1,12 +1,25 @@
 package net.koonts;
 
+import java.awt.*;
+
 public class Controls {
     ParticlePanel particlePanel;
+    public Button resetButton = new Button();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
+        //buttons
+
+        resetButton.addActionListener(particlePanel);
+        resetButton.setPreferredSize(new Dimension(60,20));
+        resetButton.setVisible(true);
+        particlePanel.add(resetButton);
+        //
     }
 
     //Controls//
+
+
+
     //reset
     public void resetSim(){
         particlePanel.timer.stop();
