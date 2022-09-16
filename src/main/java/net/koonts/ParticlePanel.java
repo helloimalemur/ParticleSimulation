@@ -146,7 +146,11 @@ public class ParticlePanel extends JPanel implements ActionListener {
         repaint(); //repaint the graphics
         updateInteraction(); //update atom interactions
         if (actionEvent.getSource()==controls.resetButton) {
-            System.out.println("buttton");
+            controls.resetSim();
+        }
+
+        if (actionEvent.getSource()==controls.randomResetButton) {
+            controls.resetRandom();
         }
     }
 

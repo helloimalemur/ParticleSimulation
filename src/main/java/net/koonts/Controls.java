@@ -5,14 +5,23 @@ import java.awt.*;
 public class Controls {
     ParticlePanel particlePanel;
     public Button resetButton = new Button();
+    public Button randomResetButton = new Button();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
-        //buttons
-
+        //
+        //reset button
+        resetButton.setLabel("Reset");
         resetButton.addActionListener(particlePanel);
         resetButton.setPreferredSize(new Dimension(60,20));
         resetButton.setVisible(true);
         particlePanel.add(resetButton);
+        //
+        //random reset button
+        randomResetButton.setLabel("Random Reset");
+        randomResetButton.addActionListener(particlePanel);
+        randomResetButton.setPreferredSize(new Dimension(60,20));
+        randomResetButton.setVisible(true);
+        particlePanel.add(randomResetButton);
         //
     }
 
@@ -30,6 +39,7 @@ public class Controls {
         particlePanel.yellow.clear();
         particlePanel.magenta.clear();
         particlePanel.createAtoms();
+        particlePanel.timer.start();
     }
     //resetRandom
     public void resetRandom(){
@@ -41,6 +51,7 @@ public class Controls {
         particlePanel.yellow.clear();
         particlePanel.magenta.clear();
         particlePanel.createRandomAtoms();
+        particlePanel.timer.start();
     }
     //start
     public void start(){
