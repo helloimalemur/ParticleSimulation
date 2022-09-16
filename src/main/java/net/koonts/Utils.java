@@ -19,6 +19,9 @@ public class Utils {
         return particlePanel.random.nextDouble();
     }
 
+    //CREATE METHOD generate random seed to derive params
+    //implement ability to save/reuse seeds
+
     public Color getColor(char c) {
         //transcribe char to Java color object
         if (c=='g'||c==0) {return Color.green;}
