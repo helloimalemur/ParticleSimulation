@@ -14,26 +14,21 @@ public class ParticlePanel extends JPanel implements ActionListener {
     Random random = new Random();
 
     //simulation variables
+    Timer timer = new Timer(DELAY, this);//start timer which activates action listener on DELAY interval
     ArrayList<Atom> atoms = new ArrayList<Atom>();
 
 
     //create atoms
-    ArrayList<Atom> yellow = this.createAtoms(300, 'y');
-    ArrayList<Atom> red = this.createAtoms(300, 'r');
-    ArrayList<Atom> green = this.createAtoms(300, 'g');
-    ArrayList<Atom> blue = this.createAtoms(300, 'b');
-    ArrayList<Atom> magenta = this.createAtoms(300, 'm');
-
+    ArrayList<Atom> yellow;
+    ArrayList<Atom> red;
+    ArrayList<Atom> green;
+    ArrayList<Atom> blue;
+    ArrayList<Atom> magenta;
 
 
 
     ParticlePanel() {
-        //start timer which activates action listener on DELAY interval
-
-    }
-    public void start(){
-        Timer timer = new Timer(DELAY, this);
-        timer.start();
+        create();
     }
 
     public int random(){
@@ -51,6 +46,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
         if (c=='m') {return Color.magenta;}
         return null;
     }
+
     public void update() {
         //run interaction rules on atoms
         interactionRule(green, green, -0.28);
@@ -68,7 +64,6 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     }
 
-
     public ArrayList<Atom> createAtoms(int number, char color) {
         //create atoms and pack into ArrayList(s), 'atomgroup' and 'atoms'
         ArrayList<Atom> atomgroup = new ArrayList<>(); //used to pass atoms to individual color array(s), reference for ALL atoms packed into 'atoms' array
@@ -83,6 +78,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     }
 
     //atom interaction rules
+
     public void interactionRule(ArrayList<Atom> atoms1, ArrayList<Atom> atoms2, double g) {
         for (int i = 0; i < atoms1.size(); i++) {
             double fx = 0;
@@ -113,7 +109,6 @@ public class ParticlePanel extends JPanel implements ActionListener {
         }
     }
 
-
     public void draw(Graphics graphics) {
         for (int i = 0; i < atoms.size(); i++) {
             graphics.setColor(getColor(atoms.get(i).getC()));
@@ -136,4 +131,40 @@ public class ParticlePanel extends JPanel implements ActionListener {
         repaint(); //repaint the graphics
         update(); //update atom interactions
     }
+
+    //Controls//
+    //reset
+
+    public void resetSim(){
+        timer.stop();
+        atoms.clear();
+        red.clear();
+        green.clear();
+        blue.clear();
+        yellow.clear();
+        magenta.clear();
+        create();
+
+    }
+    public void create(){
+        yellow = this.createAtoms(300, 'y');
+        red = this.createAtoms(300, 'r');
+        green = this.createAtoms(300, 'g');
+        blue = this.createAtoms(300, 'b');
+        magenta = this.createAtoms(300, 'm');
+    }
+    //start
+    public void start(){
+        timer.start();
+    }
+    //stop
+    public void stop(){
+        timer.stop();
+    }
+    //randomize rules//manual rules
+    //random number of rules//set number of rules
+
+
+
+
 }
