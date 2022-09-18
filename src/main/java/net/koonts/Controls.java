@@ -14,7 +14,7 @@ public class Controls extends JPanel{
         this.particlePanel = particlePanel;
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setVisible(true);
-        this.setBackground(Color.black);//debug
+//        this.setBackground(Color.black);//debug
     }
 
     //Controls//
@@ -22,8 +22,8 @@ public class Controls extends JPanel{
         //reset button
         resetButton.setLabel("Reset");
         resetButton.addActionListener(actionListener);
-//        resetButton.setPreferredSize(new Dimension(60,20));
-        resetButton.setBounds(0,0,60,40);
+        resetButton.setPreferredSize(new Dimension(60,20));
+//        resetButton.setBounds(0,0,60,40);
         resetButton.setVisible(true);
         this.add(resetButton);
         //
