@@ -2,38 +2,39 @@ package net.koonts;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.EventListener;
 
-public class Controls {
+public class Controls extends JPanel{
     ParticlePanel particlePanel;
-    JPanel controlPanel = new JPanel();
+//    JPanel controlPanel = new JPanel();
     public Button resetButton = new Button();
     public Button randomResetButton = new Button();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
-        controlPanel.setLayout(new BoxLayout(controlPanel,BoxLayout.Y_AXIS));
-//        controlPanel.setPreferredSize(new Dimension(100,600));
-//        controlPanel.setBackground(Color.black);//debug
-//        controlPanel.setBounds(600,600,200,600);
-        controlPanel.setLocation(600,0);
-        //reset button
-        resetButton.setLabel("Reset");
-        resetButton.addActionListener(particlePanel);
-        resetButton.setPreferredSize(new Dimension(60,20));
-//        resetButton.setBounds(0,0,60,40);
-        resetButton.setVisible(true);
-        controlPanel.add(resetButton);
-        //
-        //random reset button
-        randomResetButton.setLabel("Random Reset");
-        randomResetButton.addActionListener(particlePanel);
-        randomResetButton.setPreferredSize(new Dimension(60,20));
-        randomResetButton.setVisible(true);
-        controlPanel.add(randomResetButton);
-        //
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        this.setVisible(true);
+        this.setBackground(Color.black);//debug
     }
 
     //Controls//
-
+    public void makeGUI(ActionListener actionListener) {
+        //reset button
+        resetButton.setLabel("Reset");
+        resetButton.addActionListener(actionListener);
+//        resetButton.setPreferredSize(new Dimension(60,20));
+        resetButton.setBounds(0,0,60,40);
+        resetButton.setVisible(true);
+        this.add(resetButton);
+        //
+        //random reset button
+        randomResetButton.setLabel("Random Reset");
+        randomResetButton.addActionListener(actionListener);
+        randomResetButton.setPreferredSize(new Dimension(60,20));
+//        resetButton.setBounds(0,0,60,40);
+        randomResetButton.setVisible(true);
+        this.add(randomResetButton);
+    }
 
 
     //reset
