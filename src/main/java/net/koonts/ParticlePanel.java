@@ -30,6 +30,8 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
 
     ParticlePanel() {
+        controls.makeGUI(this);
+        this.setBounds(0,0,600,600);
 //        createAtoms();
         createRandomAtoms();
         controls.start();//start timer
@@ -149,6 +151,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
         if (actionEvent.getSource()==controls.randomResetButton) {
             controls.resetRandom();
         }
+    }
+
+    public ActionListener getActionListener() {
+        return this.getActionListener();
     }
 
 }
