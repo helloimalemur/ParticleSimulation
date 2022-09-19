@@ -12,9 +12,10 @@ public class Controls extends JPanel{
     public Button randomResetButton = new Button();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
-        this.setLayout(new GridLayout(6,1));
-        this.setBounds(600,0,200,600);
-//        this.setPreferredSize(new Dimension(60,600));
+//        this.setLayout(new GridLayout(6,1));
+        this.setLayout(new GridLayout(6,2));
+//        this.setBounds(600,0,200,600);
+        this.setPreferredSize(new Dimension(200,600));
         this.setVisible(true);
 //        this.setBackground(Color.black);//debug
     }
@@ -24,7 +25,7 @@ public class Controls extends JPanel{
         //reset button
         resetButton.setLabel("Reset");
         resetButton.addActionListener(actionListener);
-//        resetButton.setPreferredSize(new Dimension(60,20));
+        resetButton.setPreferredSize(new Dimension(60,20));
 //        resetButton.setBounds(600,0,60,40);
         resetButton.setVisible(true);
         this.add(resetButton);
@@ -32,7 +33,7 @@ public class Controls extends JPanel{
         //random reset button
         randomResetButton.setLabel("Random Reset");
         randomResetButton.addActionListener(actionListener);
-//        randomResetButton.setPreferredSize(new Dimension(60,20));
+        randomResetButton.setPreferredSize(new Dimension(60,20));
 //        resetButton.setBounds(0,0,60,40);
         randomResetButton.setVisible(true);
         this.add(randomResetButton);
