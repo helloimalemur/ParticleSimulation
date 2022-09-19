@@ -11,14 +11,12 @@ public class Controls extends JPanel{
     public JButton resetButton = new JButton();
     public JButton randomResetButton = new JButton();
     public JLabel totalAtoms = new JLabel();
+//    public JLabel totalRules = new JLabel();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
-//        this.setLayout(new GridLayout(6,1));
         this.setLayout(new GridLayout(12,2));
-//        this.setBounds(600,0,200,600);
         this.setPreferredSize(new Dimension(200,600));
         this.setVisible(true);
-//        this.setBackground(Color.black);//debug
     }
 
     //Controls//
@@ -51,12 +49,21 @@ public class Controls extends JPanel{
         atomsName.setVisible(true);
         atomsPanel.add(atomsName, BorderLayout.WEST);
         atomsPanel.add(totalAtoms, BorderLayout.EAST);
-
-
         this.add(atomsPanel);
-        //number of rules
-        //
 
+        //number of rules
+//        JPanel rulesPanel = new JPanel();
+//        atomsPanel.setLayout(new BorderLayout());
+//        JLabel rulesName = new JLabel();
+//        atomsPanel.setPreferredSize(new Dimension(160,20));
+//        totalRules.setPreferredSize(new Dimension(80,20));
+//        atomsName.setPreferredSize(new Dimension(80,20));
+//        atomsName.setText("Total Atoms: ");
+//        totalRules.setVisible(true);
+//        atomsName.setVisible(true);
+//        atomsPanel.add(atomsName, BorderLayout.WEST);
+//        atomsPanel.add(totalRules, BorderLayout.EAST);
+//        this.add(atomsPanel);
 
 
 
