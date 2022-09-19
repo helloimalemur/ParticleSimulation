@@ -14,7 +14,7 @@ public class Controls extends JPanel{
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
 //        this.setLayout(new GridLayout(6,1));
-        this.setLayout(new GridLayout(6,2));
+        this.setLayout(new GridLayout(12,2));
 //        this.setBounds(600,0,200,600);
         this.setPreferredSize(new Dimension(200,600));
         this.setVisible(true);
