@@ -5,19 +5,22 @@ import java.awt.*;
 
 public class ParticleFrame extends JFrame {
     ParticleFrame() {
-        Box box = new Box(BoxLayout.Y_AXIS);
-        box.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        //gui
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(610,610));
+        this.setPreferredSize(new Dimension(810,610));
+        this.setResizable(false);
+
+
         ParticlePanel particlePanel = new ParticlePanel();
         particlePanel.setPreferredSize(new Dimension(600,600));
-        this.setResizable(false);
         particlePanel.setVisible(true);
-        box.add(particlePanel);
-        this.add(box);
+        this.add(particlePanel, BorderLayout.WEST);
+        Controls controls = particlePanel.controls;
+//        controls.makeGUI(particlePanel);
+        this.add(controls, BorderLayout.EAST);
+
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-
     }
 }
