@@ -8,8 +8,9 @@ import java.util.EventListener;
 public class Controls extends JPanel{
     ParticlePanel particlePanel;
 //    JPanel controlPanel = new JPanel();
-    public Button resetButton = new Button();
-    public Button randomResetButton = new Button();
+    public JButton resetButton = new JButton();
+    public JButton randomResetButton = new JButton();
+    public JLabel totalAtoms = new JLabel();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
 //        this.setLayout(new GridLayout(6,1));
@@ -23,7 +24,7 @@ public class Controls extends JPanel{
     //Controls//
     public void makeGUI(ActionListener actionListener) {
         //reset button
-        resetButton.setLabel("Reset");
+        resetButton.setText("Reset");
         resetButton.addActionListener(actionListener);
         resetButton.setPreferredSize(new Dimension(60,20));
 //        resetButton.setBounds(600,0,60,40);
@@ -31,12 +32,34 @@ public class Controls extends JPanel{
         this.add(resetButton);
         //
         //random reset button
-        randomResetButton.setLabel("Random Reset");
+        randomResetButton.setText("Random Reset");
         randomResetButton.addActionListener(actionListener);
         randomResetButton.setPreferredSize(new Dimension(60,20));
 //        resetButton.setBounds(0,0,60,40);
         randomResetButton.setVisible(true);
         this.add(randomResetButton);
+
+        //number of atoms
+        JPanel atomsPanel = new JPanel();
+        atomsPanel.setLayout(new BorderLayout());
+        JLabel atomsName = new JLabel();
+        atomsPanel.setPreferredSize(new Dimension(160,20));
+        totalAtoms.setPreferredSize(new Dimension(80,20));
+        atomsName.setPreferredSize(new Dimension(80,20));
+        atomsName.setText("Total Atoms: ");
+        totalAtoms.setVisible(true);
+        atomsName.setVisible(true);
+        atomsPanel.add(atomsName, BorderLayout.WEST);
+        atomsPanel.add(totalAtoms, BorderLayout.EAST);
+
+
+        this.add(atomsPanel);
+        //number of rules
+        //
+
+
+
+
     }
 
 

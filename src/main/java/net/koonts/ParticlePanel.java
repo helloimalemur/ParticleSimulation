@@ -78,7 +78,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(yellow, blue, 0.2);
         interactionRule(yellow, magenta, 0.3);
         interactionRule(magenta, magenta, -0.3);
-
+        controls.totalAtoms.setText(String.valueOf(atoms.size()));
     }
 
 //    public void randomRules(){
