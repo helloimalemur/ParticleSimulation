@@ -17,10 +17,13 @@ public class Utils {
 
     public double randomDouble(ParticlePanel particlePanel) {/// believe we're only getting postive
         double d;
-        d = particlePanel.random.nextDouble();
-        if (d%2==0) {
-            d = d * -1;
-        }
+        double upper = .3;
+        double lower = -.3;
+        d = Math.random() * (upper-lower) + lower;
+//        d = particlePanel.random.nextDouble();
+//        if (d%2==0) {
+//            d = d * -1;
+//        }
         return d;
     }
 
