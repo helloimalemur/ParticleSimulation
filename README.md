@@ -2,7 +2,8 @@
 <h2>simple Java port of <a href="https://github.com/hunar4321/particle-life">Brainxyz's Artificial Life</a></h2>
 
 A simple program to simulate primitive Artificial Life using simple rules of attraction or repulsion among atom-like particles, producing complex self-organzing life-like patterns.
-![Screenshot from 2022-09-19 18-42-13](https://user-images.githubusercontent.com/37273704/191132346-47b67ba6-f889-4d2e-ab0d-3d1b0c37656b.png)
+![Screenshot from 2022-09-20 15-41-30](https://user-images.githubusercontent.com/37273704/191349879-ee77b5b2-e7f7-48ed-9b7d-0c7bedc53ef5.png)
+
 
 
 
