@@ -76,15 +76,15 @@ public class Controls extends JPanel{
 
 
         //rules
-        JPanel rulePanel = new JPanel();
-        rulePanel.setLayout(new BorderLayout());
-        JLabel ruleName = new JLabel();
-        rulePanel.setPreferredSize(new Dimension(160,20));
-        ruleName.setPreferredSize(new Dimension(80,20));
-        ruleName.setText("Rules: ");
-        ruleName.setVisible(true);
-        rulePanel.add(ruleName);
-        this.add(rulePanel);
+//        JPanel rulePanel = new JPanel();
+//        rulePanel.setLayout(new BorderLayout());
+//        JLabel ruleName = new JLabel();
+//        rulePanel.setPreferredSize(new Dimension(160,20));
+//        ruleName.setPreferredSize(new Dimension(80,20));
+//        ruleName.setText("Rules: ");
+//        ruleName.setVisible(true);
+//        rulePanel.add(ruleName);
+//        this.add(rulePanel);
 
     }
 
