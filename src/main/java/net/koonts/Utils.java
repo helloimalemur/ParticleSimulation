@@ -18,7 +18,7 @@ public class Utils {
     public double randomDouble(ParticlePanel particlePanel) {/// believe we're only getting postive
         double d;
         double upper = .3;
-        double lower = -.3;
+        double lower = -0.3;
         d = Math.random() * (upper-lower) + lower;
 //        d = particlePanel.random.nextDouble();
 //        if (d%2==0) {
