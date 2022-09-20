@@ -14,10 +14,12 @@ public class ParticlePanel extends JPanel implements ActionListener {
     Random random = new Random();
 
     //simulation variables
+    int numRule = 0;
     Controls controls = new Controls(this);
     Utils utils = new Utils(this);
     Timer timer = new Timer(DELAY, this);//start timer which activates action listener on DELAY interval
     ArrayList<Atom> atoms = new ArrayList<Atom>();
+    ArrayList<Rule> rules = new ArrayList<>();
 
 
     //create atoms
@@ -78,15 +80,23 @@ public class ParticlePanel extends JPanel implements ActionListener {
         interactionRule(yellow, blue, 0.2);
         interactionRule(yellow, magenta, 0.3);
         interactionRule(magenta, magenta, -0.3);
+
+
         controls.totalAtoms.setText(String.valueOf(atoms.size()));
+//        controls.totalRules.setText(String.valueOf(numRule));
+
     }
 
-//    public void randomRules(){
-//        int numRule = random.nextInt(12);
-//        for (int i=0;i<numRule;i++) {
-//            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
-//        }
-//    }
+    public void randomRules(){
+        int numRule = random.nextInt(12);
+        for (int i=0;i<numRule;i++) {
+            Rule rule = new Rule();
+
+            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
+
+        }
+        controls.totalRules.setText(String.valueOf(numRule));
+    }
 
     //atom interaction rules
 
@@ -150,6 +160,10 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
         if (actionEvent.getSource()==controls.randomResetButton) {
             controls.resetRandom();
+        }
+
+        if (actionEvent.getSource()==controls.randomRulesButton) {
+            randomRules();
         }
     }
 

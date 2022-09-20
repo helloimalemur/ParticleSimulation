@@ -10,8 +10,9 @@ public class Controls extends JPanel{
 //    JPanel controlPanel = new JPanel();
     public JButton resetButton = new JButton();
     public JButton randomResetButton = new JButton();
+    public JButton randomRulesButton = new JButton();
     public JLabel totalAtoms = new JLabel();
-//    public JLabel totalRules = new JLabel();
+    public JLabel totalRules = new JLabel();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
         this.setLayout(new GridLayout(12,2));
@@ -37,6 +38,14 @@ public class Controls extends JPanel{
         randomResetButton.setVisible(true);
         this.add(randomResetButton);
 
+        //randomize rules
+        randomRulesButton.setText("Random Rules");
+        randomRulesButton.addActionListener(actionListener);
+        randomRulesButton.setPreferredSize(new Dimension(60,20));
+        randomRulesButton.setVisible(true);
+        this.add(randomRulesButton);
+
+
         //number of atoms
         JPanel atomsPanel = new JPanel();
         atomsPanel.setLayout(new BorderLayout());
@@ -51,20 +60,19 @@ public class Controls extends JPanel{
         atomsPanel.add(totalAtoms, BorderLayout.EAST);
         this.add(atomsPanel);
 
-        //number of rules
-//        JPanel rulesPanel = new JPanel();
-//        atomsPanel.setLayout(new BorderLayout());
-//        JLabel rulesName = new JLabel();
-//        atomsPanel.setPreferredSize(new Dimension(160,20));
-//        totalRules.setPreferredSize(new Dimension(80,20));
-//        atomsName.setPreferredSize(new Dimension(80,20));
-//        atomsName.setText("Total Atoms: ");
-//        totalRules.setVisible(true);
-//        atomsName.setVisible(true);
-//        atomsPanel.add(atomsName, BorderLayout.WEST);
-//        atomsPanel.add(totalRules, BorderLayout.EAST);
-//        this.add(atomsPanel);
-
+//        //number of rules
+        JPanel rulesPanel = new JPanel();
+        rulesPanel.setLayout(new BorderLayout());
+        JLabel rulesName = new JLabel();
+        rulesPanel.setPreferredSize(new Dimension(160,20));
+        totalRules.setPreferredSize(new Dimension(80,20));
+        rulesName.setPreferredSize(new Dimension(80,20));
+        rulesName.setText("Total Rules: ");
+        totalRules.setVisible(true);
+        rulesName.setVisible(true);
+        rulesPanel.add(rulesName, BorderLayout.WEST);
+        rulesPanel.add(totalRules, BorderLayout.EAST);
+        this.add(rulesPanel);
 
 
     }
