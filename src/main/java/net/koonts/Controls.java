@@ -75,6 +75,17 @@ public class Controls extends JPanel{
         this.add(rulesPanel);
 
 
+        //rules
+        JPanel rulePanel = new JPanel();
+        rulePanel.setLayout(new BorderLayout());
+        JLabel ruleName = new JLabel();
+        rulePanel.setPreferredSize(new Dimension(160,20));
+        ruleName.setPreferredSize(new Dimension(80,20));
+        ruleName.setText("Rules: ");
+        ruleName.setVisible(true);
+        rulePanel.add(ruleName);
+        this.add(rulePanel);
+
     }
 
 
@@ -89,6 +100,7 @@ public class Controls extends JPanel{
         particlePanel.magenta.clear();
         particlePanel.createAtoms();
         particlePanel.timer.start();
+        particlePanel.randomRules();
     }
     //resetRandom
     public void resetRandom(){
@@ -101,6 +113,7 @@ public class Controls extends JPanel{
         particlePanel.magenta.clear();
         particlePanel.createRandomAtoms();
         particlePanel.timer.start();
+        particlePanel.randomRules();
     }
     //start
     public void start(){

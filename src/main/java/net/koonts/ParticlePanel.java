@@ -14,12 +14,12 @@ public class ParticlePanel extends JPanel implements ActionListener {
     Random random = new Random();
 
     //simulation variables
-    int numRule = 0;
+    int rulesLimit = 12;
     Controls controls = new Controls(this);
     Utils utils = new Utils(this);
     Timer timer = new Timer(DELAY, this);//start timer which activates action listener on DELAY interval
     ArrayList<Atom> atoms = new ArrayList<Atom>();
-    ArrayList<Rule> rules = new ArrayList<>();
+    ArrayList<Rule> rules = new ArrayList<>(12);
 
 
     //create atoms
@@ -36,6 +36,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
         this.setBounds(0,0,600,600);
 //        createAtoms();
         createRandomAtoms();
+        randomRules();
         controls.start();//start timer
     }
 
@@ -67,32 +68,41 @@ public class ParticlePanel extends JPanel implements ActionListener {
     }
 
     public void updateInteraction() {
-        //run interaction rules on atoms
-        interactionRule(green, green, -0.28);
-        interactionRule(green, red, -0.17);
-        interactionRule(green, yellow, 0.5);
-        interactionRule(red, red, -0.1);
-        interactionRule(red, green, -0.34);
-        interactionRule(yellow, yellow, 0.15);
-        interactionRule(yellow, green, -0.2);
-        interactionRule(blue, blue, -0.1);
-        interactionRule(green, blue, -0.2);
-        interactionRule(yellow, blue, 0.2);
-        interactionRule(yellow, magenta, 0.3);
-        interactionRule(magenta, magenta, -0.3);
+
+        for (int i=0;i<rules.size();i++) {
+            interactionRule(rules.get(i));
+        }
+
+        //previous rules
+//        interactionRule(green, green, -0.28);
+//        interactionRule(green, red, -0.17);
+//        interactionRule(green, yellow, 0.5);
+//        interactionRule(rules.get(0).color1, rules.get(0).color2, rules.get(0).g);
+//        interactionRule(red, green, -0.34);
+//        interactionRule(yellow, yellow, 0.15);
+//        interactionRule(yellow, green, -0.2);
+//        interactionRule(blue, blue, -0.1);
+//        interactionRule(green, blue, -0.2);
+//        interactionRule(yellow, blue, 0.2);
+//        interactionRule(yellow, magenta, 0.3);
+//        interactionRule(magenta, magenta, -0.3);
 
 
         controls.totalAtoms.setText(String.valueOf(atoms.size()));
-//        controls.totalRules.setText(String.valueOf(numRule));
+        controls.totalRules.setText(String.valueOf(rules.size()));
 
     }
 
     public void randomRules(){
-        int numRule = random.nextInt(12);
+        rules.clear();
+        int numRule = random.nextInt(rulesLimit);// rules limit
         for (int i=0;i<numRule;i++) {
             Rule rule = new Rule();
-
-            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
+            rule.color1 = utils.randomGroupofAtoms(this);
+            rule.color2 = utils.randomGroupofAtoms(this);
+            rule.g = utils.randomDouble(this);
+            rules.add(i, rule);
+//            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
 
         }
         controls.totalRules.setText(String.valueOf(numRule));
@@ -100,7 +110,11 @@ public class ParticlePanel extends JPanel implements ActionListener {
 
     //atom interaction rules
 
-    public void interactionRule(ArrayList<Atom> atoms1, ArrayList<Atom> atoms2, double g) {
+    public void interactionRule(Rule rule) {
+        ArrayList<Atom> atoms1 = rule.color1;
+        ArrayList<Atom> atoms2 = rule.color1;
+        double g = rule.g;
+
         for (int i = 0; i < atoms1.size(); i++) {
             double fx = 0;
             double fy = 0;
