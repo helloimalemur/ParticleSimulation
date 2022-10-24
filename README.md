@@ -21,4 +21,4 @@ A simple program to simulate primitive Artificial Life using simple rules of att
 
 2. Extract zip
 
-3. run in PowerShell: ```.\gradlew.bat run```
+3. run in PowerShell: ```.\gradlew run```
