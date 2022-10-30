@@ -16,7 +16,6 @@ public class ParticleFrame extends JFrame {
         particlePanel.setVisible(true);
         this.add(particlePanel, BorderLayout.WEST);
         Controls controls = particlePanel.controls;
-//        controls.makeGUI(particlePanel);
         this.add(controls, BorderLayout.EAST);
 
         this.pack();

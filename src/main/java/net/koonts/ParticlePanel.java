@@ -84,6 +84,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
                 rule.color2 = utils.randomGroupofAtoms(this);
                 rule.g = utils.randomDouble(this);
                 rules.add(i, rule);
+
             }
         } else {randomRules();}
         controls.totalRules.setText(String.valueOf(numRule));

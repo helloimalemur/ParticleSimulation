@@ -13,6 +13,7 @@ public class Controls extends JPanel{
     public JButton randomRulesButton = new JButton();
     public JLabel totalAtoms = new JLabel();
     public JLabel totalRules = new JLabel();
+    public JTextArea rulesList = new JTextArea();
     Controls(ParticlePanel particlePanel) {
         this.particlePanel = particlePanel;
         this.setLayout(new GridLayout(12,2));
@@ -51,8 +52,8 @@ public class Controls extends JPanel{
         atomsPanel.setLayout(new BorderLayout());
         JLabel atomsName = new JLabel();
         atomsPanel.setPreferredSize(new Dimension(160,20));
-        totalAtoms.setPreferredSize(new Dimension(80,20));
-        atomsName.setPreferredSize(new Dimension(80,20));
+        totalAtoms.setPreferredSize(new Dimension(60,20));
+        atomsName.setPreferredSize(new Dimension(100,20));
         atomsName.setText("Total Atoms: ");
         totalAtoms.setVisible(true);
         atomsName.setVisible(true);
@@ -65,8 +66,8 @@ public class Controls extends JPanel{
         rulesPanel.setLayout(new BorderLayout());
         JLabel rulesName = new JLabel();
         rulesPanel.setPreferredSize(new Dimension(160,20));
-        totalRules.setPreferredSize(new Dimension(80,20));
-        rulesName.setPreferredSize(new Dimension(80,20));
+        totalRules.setPreferredSize(new Dimension(60,20));
+        rulesName.setPreferredSize(new Dimension(100,20));
         rulesName.setText("Total Rules: ");
         totalRules.setVisible(true);
         rulesName.setVisible(true);
@@ -75,15 +76,24 @@ public class Controls extends JPanel{
         this.add(rulesPanel);
 
 
-        //rules
+//        //rules
 //        JPanel rulePanel = new JPanel();
 //        rulePanel.setLayout(new BorderLayout());
 //        JLabel ruleName = new JLabel();
-//        rulePanel.setPreferredSize(new Dimension(160,20));
-//        ruleName.setPreferredSize(new Dimension(80,20));
+//        rulePanel.setPreferredSize(new Dimension(100,200));
+//        rulePanel.setVisible(true);
+//
+////        ruleName.setPreferredSize(new Dimension(80,20));
 //        ruleName.setText("Rules: ");
 //        ruleName.setVisible(true);
-//        rulePanel.add(ruleName);
+//
+//        rulesList.setPreferredSize(new Dimension(150,100));
+//        rulesList.setVisible(true);
+//
+////        rulePanel.add(ruleName, BorderLayout.NORTH);
+//        add(ruleName, BorderLayout.NORTH);
+////        rulePanel.add(rulesList, BorderLayout.SOUTH);
+//        add(rulesList, BorderLayout.SOUTH);
 //        this.add(rulePanel);
 
     }
