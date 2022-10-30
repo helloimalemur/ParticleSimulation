@@ -14,7 +14,7 @@ public class ParticlePanel extends JPanel implements ActionListener {
     Random random = new Random();
 
     //simulation variables
-    int rulesLimit = 12;
+    int rulesLimit = 20;
     Controls controls = new Controls(this);
     Utils utils = new Utils(this);
     Timer timer = new Timer(DELAY, this);//start timer which activates action listener on DELAY interval
@@ -54,17 +54,15 @@ public class ParticlePanel extends JPanel implements ActionListener {
             Atom atom = new Atom(utils.random(this), utils.random(this), color);
             atomgroup.add(i, atom);
             atoms.add(atomgroup.get(i));
-            //atoms.add(i, atom);
         }
         return atomgroup;
-        //return atoms;
     }
     public void createRandomAtoms(){
-        yellow = generateAtoms(random.nextInt(300), utils.randomColor(this));
-        red = generateAtoms(random.nextInt(300), utils.randomColor(this));
-        green = generateAtoms(random.nextInt(300), utils.randomColor(this));
-        blue = generateAtoms(random.nextInt(300), utils.randomColor(this));
-        magenta = generateAtoms(random.nextInt(300), utils.randomColor(this));
+        yellow = generateAtoms(random.nextInt(500), utils.randomColor(this));
+        red = generateAtoms(random.nextInt(500), utils.randomColor(this));
+        green = generateAtoms(random.nextInt(500), utils.randomColor(this));
+        blue = generateAtoms(random.nextInt(500), utils.randomColor(this));
+        magenta = generateAtoms(random.nextInt(500), utils.randomColor(this));
     }
 
     public void updateInteraction() {
@@ -72,39 +70,22 @@ public class ParticlePanel extends JPanel implements ActionListener {
         for (int i=0;i<rules.size();i++) {
             interactionRule(rules.get(i));
         }
-
-        //previous rules
-//        interactionRule(green, green, -0.28);
-//        interactionRule(green, red, -0.17);
-//        interactionRule(green, yellow, 0.5);
-//        interactionRule(rules.get(0).color1, rules.get(0).color2, rules.get(0).g);
-//        interactionRule(red, green, -0.34);
-//        interactionRule(yellow, yellow, 0.15);
-//        interactionRule(yellow, green, -0.2);
-//        interactionRule(blue, blue, -0.1);
-//        interactionRule(green, blue, -0.2);
-//        interactionRule(yellow, blue, 0.2);
-//        interactionRule(yellow, magenta, 0.3);
-//        interactionRule(magenta, magenta, -0.3);
-
-
         controls.totalAtoms.setText(String.valueOf(atoms.size()));
         controls.totalRules.setText(String.valueOf(rules.size()));
-
     }
 
     public void randomRules(){
         rules.clear();
         int numRule = random.nextInt(rulesLimit);// rules limit
-        for (int i=0;i<numRule;i++) {
-            Rule rule = new Rule();
-            rule.color1 = utils.randomGroupofAtoms(this);
-            rule.color2 = utils.randomGroupofAtoms(this);
-            rule.g = utils.randomDouble(this);
-            rules.add(i, rule);
-//            interactionRule(utils.randomGroupofAtoms(this), utils.randomGroupofAtoms(this), utils.randomDouble(this));
-
-        }
+        if (numRule > 5 && numRule < 20 && !(numRule % 2 == 0)) {
+            for (int i=0;i<numRule;i++) {
+                Rule rule = new Rule();
+                rule.color1 = utils.randomGroupofAtoms(this);
+                rule.color2 = utils.randomGroupofAtoms(this);
+                rule.g = utils.randomDouble(this);
+                rules.add(i, rule);
+            }
+        } else {randomRules();}
         controls.totalRules.setText(String.valueOf(numRule));
     }
 
@@ -150,21 +131,19 @@ public class ParticlePanel extends JPanel implements ActionListener {
     public void draw(Graphics graphics) {
         for (int i = 0; i < atoms.size(); i++) {
             graphics.setColor(utils.getColor(atoms.get(i).getC()));
-            graphics.fillOval(Math.abs((int) atoms.get(i).x),Math.abs((int) atoms.get(i).y),5,5);// cast x/y to int to draw atoms
-            //System.out.println(atoms.get(i).x+atoms.get(i).y);
-            //definitely a bug here casting double to int
-            // getting coords outside grid
+            graphics.fillOval(Math.abs((int) atoms.get(i).x),Math.abs((int) atoms.get(i).y),5,5);// cast x/y from double to int to draw atoms
+            //definitely not ideal casting double to int
         }
     }
 
     @Override
-    public void paintComponent(Graphics g) { //override abstract method inhereted from extending JPanel
+    public void paintComponent(Graphics g) { //override abstract method inherited from extending JPanel
         super.paintComponent(g);
         draw(g);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) { //override abstract method inhereted from implementing actionlistener
+    public void actionPerformed(ActionEvent actionEvent) { //override abstract method inherited from implementing actionlistener
         //we activate this using timer
         repaint(); //repaint the graphics
         updateInteraction(); //update atom interactions
@@ -180,9 +159,4 @@ public class ParticlePanel extends JPanel implements ActionListener {
             randomRules();
         }
     }
-
-    public ActionListener getActionListener() {
-        return this.getActionListener();
-    }
-
 }
